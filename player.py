@@ -17,9 +17,9 @@ class Player:
             self.playerX = 1436
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
-                self.playerX_change -= 0.2
+                self.playerX_change -= 0.25
             if event.key == pygame.K_d:
-                self.playerX_change += 0.2
+                self.playerX_change += 0.25
             if event.key == pygame.K_e:
                 self.quizScreen = True
         if event.type == pygame.KEYUP:

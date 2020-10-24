@@ -24,15 +24,14 @@ npc2 = npc.NPC("npc-man2.png", 1240, 480)
 p1 = Player("standing-up-man-.png", 370, 480)
 while running:
     screen.fill((128, 242, 233))
+    npc1.draw(screen)
+    npc2.draw(screen)
     # Window is closed.
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
     #Checks if player is hitting buttons
-    p1.actions(event)
-
+        p1.actions(event)
     p1.draw(screen)
-    npc1.draw(screen)
-    npc2.draw(screen)
     p1.quizBackground(screen)
     pygame.display.update()
