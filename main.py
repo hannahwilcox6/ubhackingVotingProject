@@ -11,6 +11,13 @@ icon = pygame.image.load("vote.png")
 pygame.display.set_icon(icon)
 
 running = True
+test1 = {"How old do you need to be to vote?": ["[A] 18", "[B] 21", "[C] 28", "[D] 16"]}
+
+# Player
+playerImg = pygame.image.load("standing-up-man-.png")
+playerX = 370
+playerY = 480
+playerMove = 0
 
 npc1 = npc.NPC("npc-man1.png",690, 480)
 npc2 = npc.NPC("npc-man2.png", 1240, 480)
