@@ -1,4 +1,6 @@
 import pygame
+from player import Player
+import npc
 pygame.init()
 
 #  game window, with height and width
@@ -10,56 +12,9 @@ pygame.display.set_icon(icon)
 
 running = True
 
-class Player:
-    playerX_change = 0
-    playerY_change = 0
-    quizScreen = False
-
-    def __init__(self, img, x, y):
-        self.playerImg = pygame.image.load(img)
-        self.playerX = x
-        self.playerY = y
-
-    def actions(self):
-        if player.playerX <= 0:
-            player.playerX = 0
-        elif player.playerX >= 1436:
-            player.playerX = 1436
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                self.playerX_change -= 0.2
-            if event.key == pygame.K_RIGHT:
-                self.playerX_change += 0.2
-            if event.key == pygame.K_e:
-                self.quizScreen = True
-                #player.quizBackground()
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or pygame.K_RIGHT:
-                self.playerX_change = 0
-
-    def player(self):
-        screen.blit(self.playerImg, (self.playerX, self.playerY))
-        self.playerX += self.playerX_change
-        self.playerY += self.playerY_change
-
-    def quizBackground(self):
-        if self.quizScreen:
-            rect = pygame.Surface((1000, 750))  # the size of your rect
-            rect.set_alpha(128)  # alpha level
-            rect.fill((255, 255, 255))
-            screen.blit(rect, (0, 0))
-
-class NPC:
-    def __init__(self, img, x, y):
-        self.NPCImg = pygame.image.load(img)
-        self.x = x
-        self.y = y
-    def npc(self):
-        screen.blit(self.NPCImg, (self.x, self.y))
-
-npc1 = NPC("npc-man1.png",690, 480)
-npc2 = NPC("npc-man2.png", 1240, 480)
-player = Player("standing-up-man-.png", 370, 480)
+npc1 = npc.NPC("npc-man1.png",690, 480)
+npc2 = npc.NPC("npc-man2.png", 1240, 480)
+p1 = Player("standing-up-man-.png", 370, 480)
 while running:
     screen.fill((128, 242, 233))
     # Window is closed.
@@ -67,10 +22,10 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     #Checks if player is hitting buttons
-    player.actions()
+    p1.actions(event)
 
-    player.player()
-    npc1.npc()
-    npc2.npc()
-    player.quizBackground()
+    p1.draw(screen)
+    npc1.draw(screen)
+    npc2.draw(screen)
+    p1.quizBackground(screen)
     pygame.display.update()
