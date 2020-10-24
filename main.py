@@ -49,8 +49,16 @@ class Player:
             rect.fill((255, 255, 255))
             screen.blit(rect, (0, 0))
 
+class NPC:
+    def __init__(self, img, x, y):
+        self.NPCImg = pygame.image.load(img)
+        self.x = x
+        self.y = y
+    def npc(self):
+        screen.blit(self.NPCImg, (self.x, self.y))
 
-
+npc1 = NPC("npc-man1.png",690, 480)
+npc2 = NPC("npc-man2.png", 1240, 480)
 player = Player("standing-up-man-.png", 370, 480)
 while running:
     screen.fill((128, 242, 233))
@@ -62,5 +70,7 @@ while running:
     player.actions()
 
     player.player()
+    npc1.npc()
+    npc2.npc()
     player.quizBackground()
     pygame.display.update()
