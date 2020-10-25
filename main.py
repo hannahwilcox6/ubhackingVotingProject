@@ -7,7 +7,7 @@ pygame.init()
 
 Prescreen = pygame.display.set_mode((1500,600))
 #Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-pygame.display.set_caption("UBHacking Voting 2020")
+pygame.display.set_caption("The Vigilant Voter")
 icon = pygame.image.load("vote.png")
 pygame.display.set_icon(icon)
 
@@ -47,9 +47,9 @@ ans2 = ["D","D","C"]
 ansInd2 = [3,3,2]
 quiz3 = {"When does early voting occur in NYS?": ["[A] It doesn't","[B] October 2 - November 3", "[C] October 24 - November 3","[D] None of the above"],
          "How can you request a mail in ballot?": ["[A] Following the steps in websites like voteearlyny.org","[B] Through your local election office","[C] Going to vote.org and filling out the application online", "[D] All of the above"],
-         "When is election day?": ["[A] November 3", "[B] 6AM - 9PM", "[C] During designated early voting periods", "[D] All of the above"]}
-ans3 = ["C","D","D"]
-ansInd3 = [2,3,3]
+         "When is election day?": ["[A] November 3", "[B] November 1", "[C] October 31", "[D] All of the above"]}
+ans3 = ["C","D","A"]
+ansInd3 = [2,3,0]
 
 q1 = Quiz(screen,quiz1,ans1,ansInd1,0,1)
 q2 = Quiz(screen, quiz2, ans2, ansInd2, 0, 1)
