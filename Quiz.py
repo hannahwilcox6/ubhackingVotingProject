@@ -5,10 +5,11 @@ class Quiz:
     display_height = 275
     quizActive = False
 
-    def __init__(self,screen,text,ans,loc,display):
+    def __init__(self,screen,text,ans,ansInd,loc,display):
         self.screen = screen
         self.text = text
         self.ans = ans
+        self.ansInd = ansInd
         self.loc = loc
         self.display = display
         self.x = ""
@@ -20,21 +21,21 @@ class Quiz:
                     if self.ans[self.loc] == "A":
                         self.display = 3
                     else:
-                        self.x = self.text[list(self.text.keys())[self.loc]][0]
+                        self.x = self.text[list(self.text.keys())[self.loc]][self.ansInd[self.loc]]
                         self.display = 2
                     self.loc += 1
                 if event.key == pygame.K_b:
                     if self.ans[self.loc] == "B":
                         self.display = 3
                     else:
-                        self.x = self.text[list(self.text.keys())[self.loc]][1]
+                        self.x = self.text[list(self.text.keys())[self.loc]][self.ansInd[self.loc]]
                         self.display = 2
                     self.loc += 1
                 if event.key == pygame.K_c:
                     if self.ans[self.loc] == "C":
                         self.display = 3
                     else:
-                        self.x = self.text[list(self.text.keys())[self.loc]][2]
+                        self.x = self.text[list(self.text.keys())[self.loc]][self.ansInd[self.loc]]
                         self.display = 2
                     self.loc += 1
                 if event.key == pygame.K_d:
@@ -42,7 +43,7 @@ class Quiz:
                         self.display = 3
                     else:
                         print(list(self.text.keys()))
-                        self.x = self.text[list(self.text.keys())[self.loc]][3]
+                        self.x = self.text[list(self.text.keys())[self.loc]][self.ansInd[self.loc]]
                         self.display = 2
                     self.loc += 1
             elif event.key == pygame.K_SPACE and self.loc > 2:

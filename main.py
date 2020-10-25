@@ -19,21 +19,24 @@ quiz1 = {"When is the deadline to register to vote?": ["[A] November 3", "[B] Oc
                                                              "[C] Various websites online",
                                                              "[D] Just remember when you did it"]}
 ans1 = ["B","A","C"]
+ansInd1 = [1,0,2]
 quiz2 = {"Who isn't a current official presidential candidate?": ["[A] Joe Biden - Kamala Harris", "[B] Donald Trump - Mike Pence", "[C] Jo Jorgenson - Spike Cohen", "[D] Daniel Rotter - Grace Grenki"],
          "Who can you write in for the presidential candidate?": ["[A] Kanye West", "[B] Your mom", "[C] Your school principal", "[D] All of the above"],
          "How should you research candidates?": ["[A] Don't, just pick randomly.","[B] Only look from one news site", "[C] Check a variety of sources with different views", "[D] Ask your parents"]}
 ans2 = ["D","D","C"]
+ansInd2 = [3,3,2]
 quiz3 = {"When does early voting occur in NYS?": ["[A] It doesn't","[B] October 2 - November 3", "[C] October 24 - November 3","[D] None of the above"],
          "How can you request a mail in ballot?": ["[A] Following the steps in websites like voteearlyny.org","[B] Through your local election office","[C] Going to vote.org and filling out the application online", "[D] All of the above"],
          "When is election day?": ["[A] November 3", "[B] 6AM - 9PM", "[C] During designated early voting periods", "[D] All of the above"]}
 ans3 = ["C","D","D"]
+ansInd3 = [2,3,3]
 
 Y = 460
 npc1 = npc.NPC("man1.png",690, Y)
 npc2 = npc.NPC("man2.png", 1240, Y)
 p1 = Player("person1.png", 370, Y)
 
-q1 = Quiz(screen,quiz1,ans1,0,1)
+q1 = Quiz(screen,quiz1,ans1,ansInd1,0,1)
 npcs = [npc1,npc2]
 
 
