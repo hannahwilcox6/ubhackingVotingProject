@@ -15,6 +15,7 @@ preRunning = True
 while preRunning:
     bg = pygame.image.load("titlefinal.jpg")
     Prescreen.blit(bg, (0, 0))
+    pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             preRunning = False
@@ -52,7 +53,7 @@ ansInd3 = [2,3,3]
 
 q1 = Quiz(screen,quiz1,ans1,ansInd1,0,1)
 q2 = Quiz(screen, quiz2, ans2, ansInd2, 0, 1)
-q3 = Quiz(screen, quiz3, ans2, ansInd2, 0, 1)
+q3 = Quiz(screen, quiz3, ans3, ansInd3, 0, 1)
 
 Y = 460
 npc1 = npc.NPC("man1.png",355, Y, q1)
