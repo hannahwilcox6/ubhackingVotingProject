@@ -3,6 +3,8 @@ import pygame
 class Player:
     playerX_change = 0
     playerY_change = 0
+    collidedObject = None
+    interacting = False
     quizScreen = False
     canMove = True
 
@@ -16,14 +18,14 @@ class Player:
             self.playerX = 0
         elif self.playerX >= 1436:
             self.playerX = 1436
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN and self.interacting == False:
             if event.key == pygame.K_a:
                 self.playerX_change -= 2
             if event.key == pygame.K_d:
-                self.playerX_change += 2
-            if event.key == pygame.K_e:
+                self.playerX_change += 0.25
+            if event.key == pygame.K_e and self.collidedObject != None:
                 self.quizScreen = True
-                self.canMove = False
+                self.interacting = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_a or pygame.K_d:
                 self.playerX_change = 0
@@ -32,5 +34,11 @@ class Player:
         screen.blit(self.playerImg, (self.playerX, self.playerY))
         self.playerX += self.playerX_change
         self.playerY += self.playerY_change
+
+    def collision(self, other):
+        if (self.playerX + 32) >= other.x and self.playerX <= (other.x + 32):
+            self.collidedObject = other
+
+
 
     # Questions:
