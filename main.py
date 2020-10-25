@@ -15,6 +15,7 @@ preRunning = True
 while preRunning:
     bg = pygame.image.load("titlescreen.jpg")
     Prescreen.blit(bg, (0, 0))
+    pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             preRunning = False
@@ -83,6 +84,7 @@ while running:
     # Check for collision with npcs
     p1.collision(npc1)
     p1.collision(npc2)
+    print(p1.collidedObject)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
