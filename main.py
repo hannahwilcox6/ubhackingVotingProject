@@ -20,16 +20,15 @@ quiz1 = {"When is the deadline to register to vote?": ["[A] November 3", "[B] Oc
                                                              "[D] Just remember when you did it"]}
 test1 = {"How old do you need to be to vote?": ["[A] 18", "[B] 21", "[C] 28", "[D] 16"]}
 
-# Player
-playerImg = pygame.image.load("standing-up-man-.png")
-playerX = 370
-Y = 450
-playerMove = 0
 
+
+Y = 480
 npc1 = npc.NPC("npc-man1.png",690, Y)
 npc2 = npc.NPC("npc-man2.png", 1240, Y)
 p1 = Player("standing-up-man-.png", 370, Y)
 q1 = Quiz(test1,screen)
+npcs = [npc1,npc2]
+
 while running:
     bg = pygame.image.load("placement.png")
     screen.blit(bg,(0,0))
@@ -39,8 +38,13 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    #Checks if player is hitting buttons
         p1.actions(event)
+    #Checks if player is hitting buttons
+    for i in npcs:
+        i.draw(screen)
+
+    p1.collision(npc1)
+    p1.collision(npc2)
     p1.draw(screen)
-    #p1.quizBackground(screen)
+    p1.quizBackground(screen)
     pygame.display.update()
