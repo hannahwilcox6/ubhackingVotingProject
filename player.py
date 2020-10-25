@@ -6,7 +6,6 @@ class Player:
     collidedObject = None
     interacting = False
     quizScreen = False
-    canMove = True
 
     def __init__(self, img, x, y):
         self.playerImg = pygame.image.load(img)
@@ -26,6 +25,7 @@ class Player:
             if event.key == pygame.K_e and self.collidedObject != None:
                 self.quizScreen = True
                 self.interacting = True
+
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_a or pygame.K_d:
                 self.playerX_change = 0
