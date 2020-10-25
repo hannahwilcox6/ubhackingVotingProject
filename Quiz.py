@@ -43,7 +43,6 @@ class Quiz:
                     if self.ans[self.loc] == "D":
                         self.display = 3
                     else:
-                        print(list(self.text.keys()))
                         self.x = self.text[list(self.text.keys())[self.loc]][self.ansInd[self.loc]]
                         self.display = 2
                     self.loc += 1

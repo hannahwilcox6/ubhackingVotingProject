@@ -58,6 +58,7 @@ Y = 460
 npc1 = npc.NPC("man1.png",355, Y, q1)
 npc2 = npc.NPC("man2.png", 690, Y, q2)
 npc3 = npc.NPC("person2.png", 1240, Y, q3)
+
 p1 = Player("person1.png", 120, Y)
 
 npcs = [npc1, npc2, npc3]
@@ -79,7 +80,7 @@ def voted():
     textRect.center = ((375 * 2), (275 + 30))
     screen.blit(textSurf, textRect)
     pygame.display.update()
-
+votedB = False
 while running:
     bg = pygame.image.load("finalbgrd.jpg")
     screen.blit(bg,(0,0))
@@ -90,13 +91,16 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        print(p1.quizScreen)
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_e and (p1.playerX + 64) >= 1390:
+                votedB = True
+                voted()
 
         for i in npcs:
             p1.collision(i)
             if(p1.collidedObject != None and p1.quizScreen == False): #This is so 'e' doesn't break.
                 p1.actions(event)
-                print("AAAAAAAAAAAAAAA")
                 for i in quizzes:
                     if(p1.collidedObject.quiz == i):
                         currentquiz = i
@@ -109,6 +113,8 @@ while running:
                 p1.actions(event)
 
     p1.draw(screen)
+    if(votedB):
+        voted()
     if(currentquiz.quizActive):
         currentquiz.draw()
     else:
