@@ -11,6 +11,8 @@ First 7 Videos for basic tutorial code from playlist: https://www.youtube.com/wa
 This project was written using Python 3.7, Pycharm IDE, and the pygame library. Any and all code was written starting after the hackathon 12:00 PM start time.
 Collaborators include: Hannah Wilcox, Brodie Lembo, and Katherine Stock (ideas and visual assets, thus why she is not seen as a collaborator in this repository)
 
+To play you can download the code and launch main.py. Python 3.7 is required.
+
 PyGame Rules:
   Press 'E' for interaction between the NPCs and the Ballot Box. Use 'A' and 'D' to move left and right respectively.
   Press 'A' 'B' 'C' 'D' to answer quiz questions from NPCs.
