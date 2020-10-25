@@ -5,31 +5,20 @@ class Quiz:
     display_height = 275
     quizActive = False
 
-    def __init__(self,screen,correctans,loc,text):
+    def __init__(self,screen,text):
         self.screen = screen
-        self.correctans = correctans #List of correct answers
-        self.loc = loc
         self.text = text
-        self.keys = list(text.keys())
 
     def actions(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
-                if(self.text[self.key[self.loc]] == self.correctans[self.loc]):
-                    self.loc += 1
-                    self.draw(self, "C")
+                d = 4
             if event.key == pygame.K_b:
-                if (self.text[self.key[self.loc]] == self.correctans[self.loc]):
-                    self.loc += 1
-                    self.draw(self, "C")
+                d = 4
             if event.key == pygame.K_c:
-                if (self.text[self.key[self.loc]] == self.correctans[self.loc]):
-                    self.loc += 1
-                    self.draw(self,"C")
+                d = 4
             if event.key == pygame.L_d:
-                if (self.text[self.key[self.loc]] == self.correctans[self.loc]):
-                    self.loc += 1
-                    self.draw(self, "C")
+                d = 4
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_a or pygame.K_d:
                 self.playerX_change = 0
