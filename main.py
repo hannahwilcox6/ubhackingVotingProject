@@ -56,11 +56,11 @@ q2 = Quiz(screen, quiz2, ans2, ansInd2, 0, 1)
 q3 = Quiz(screen, quiz3, ans3, ansInd3, 0, 1)
 
 Y = 460
-npc1 = npc.NPC("man1.png",355, Y, q1)
+npc1 = npc.NPC("man1.png",235, Y, q1)
 npc2 = npc.NPC("man2.png", 690, Y, q2)
-npc3 = npc.NPC("person2.png", 1240, Y, q3)
+npc3 = npc.NPC("person2.png", 1140, Y, q3)
 
-p1 = Player("person1.png", 120, Y)
+p1 = Player("person1.png", 20, Y)
 
 npcs = [npc1, npc2, npc3]
 quizzes = [q1, q2, q3]
@@ -86,14 +86,18 @@ while running:
     bg = pygame.image.load("finalbgrd.jpg")
     screen.blit(bg,(0,0))
 
+    checked = True
     for i in npcs:
         i.draw(screen)
+        if(i.quiz.finished == False):
+            checked = False
+
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN and checked:
             if event.key == pygame.K_e and (p1.playerX + 64) >= 1390:
                 votedB = True
                 voted()
