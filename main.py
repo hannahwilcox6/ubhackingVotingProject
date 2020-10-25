@@ -24,14 +24,14 @@ test1 = {"How old do you need to be to vote?": ["[A] 18", "[B] 21", "[C] 28", "[
 
 
 Y = 460
-npc1 = npc.NPC("npc-man1.png",690, Y)
-npc2 = npc.NPC("npc-man2.png", 1240, Y)
-p1 = Player("standing-up-man-.png", 370, Y)
+npc1 = npc.NPC("man1.png",690, Y)
+npc2 = npc.NPC("man2.png", 1240, Y)
+p1 = Player("person1.png", 370, Y)
 
 q1 = Quiz(screen,quiz1,ans1,0,1)
 npcs = [npc1,npc2]
 while running:
-    bg = pygame.image.load("placement.png")
+    bg = pygame.image.load("finalbgrd.jpg")
     screen.blit(bg,(0,0))
     npc1.draw(screen)
     npc2.draw(screen)
@@ -54,8 +54,10 @@ while running:
         p1.interacting = False
     for i in npcs:
         i.draw(screen)
-
     p1.collision(npc1)
     p1.collision(npc2)
     p1.draw(screen)
+    if(q1.quizActive):
+        q1.draw()
+
     pygame.display.update()
