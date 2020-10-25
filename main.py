@@ -35,15 +35,37 @@ p1 = Player("person1.png", 370, Y)
 
 q1 = Quiz(screen,quiz1,ans1,0,1)
 npcs = [npc1,npc2]
+
+
+def text_objects(text, font):
+    black = (0, 0, 0)
+    textSurface = font.render(text, True, black)
+    return textSurface, textSurface.get_rect()
+def voted():
+    rect = pygame.Surface((700, 300))  # the size of your rect
+    rect.set_alpha(200)  # alpha level
+    rect.fill((255, 255, 255))  # Rectangle to appear behind the quiz questions
+    screen.blit(rect, (375, 275))  # Call rectangle to be drawn
+    largeText = pygame.font.Font('freesansbold.ttf', 40)
+    textSurf, textRect = text_objects("Thank you for voting!!", largeText)
+    textRect.center = ((375 * 2), (275 + 30))
+    screen.blit(textSurf, textRect)
+    pygame.display.update()
+
 while running:
     bg = pygame.image.load("finalbgrd.jpg")
     screen.blit(bg,(0,0))
     npc1.draw(screen)
     npc2.draw(screen)
     # Window is closed.
+    # Check for collision with npcs
+    p1.collision(npc1)
+    p1.collision(npc2)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if(p1.collidedObject != None and p1.quizScreen == False):
+            p1.actions(event)
         if (p1.quizScreen == True):
             q1.quizActive = True
             if(q1.quizActive == True):
@@ -51,11 +73,9 @@ while running:
             q1.actions(event)
         else:
             p1.actions(event)
-    #Checks if player is hitting buttons
+
     for i in npcs:
         i.draw(screen)
-    p1.collision(npc1)
-    p1.collision(npc2)
     p1.draw(screen)
     if(q1.quizActive):
         q1.draw()

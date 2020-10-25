@@ -36,5 +36,5 @@ class Player:
         self.playerY += self.playerY_change
 
     def collision(self, other):
-        if (self.playerX + 32) >= other.x and self.playerX <= (other.x + 32):
+        if (self.playerX + 64) >= other.x and self.playerX <= (other.x + 64):
             self.collidedObject = other

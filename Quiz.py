@@ -11,7 +11,7 @@ class Quiz:
         self.ans = ans
         self.loc = loc
         self.display = display
-        self.x = self.ans[self.loc]
+        self.x = ""
 
     def actions(self, event):
         if event.type == pygame.KEYDOWN:
@@ -20,34 +20,36 @@ class Quiz:
                     if self.ans[self.loc] == "A":
                         self.display = 3
                     else:
+                        self.x = self.text[list(self.text.keys())[self.loc]][0]
                         self.display = 2
                     self.loc += 1
                 if event.key == pygame.K_b:
                     if self.ans[self.loc] == "B":
                         self.display = 3
                     else:
+                        self.x = self.text[list(self.text.keys())[self.loc]][1]
                         self.display = 2
                     self.loc += 1
                 if event.key == pygame.K_c:
                     if self.ans[self.loc] == "C":
                         self.display = 3
                     else:
+                        self.x = self.text[list(self.text.keys())[self.loc]][2]
                         self.display = 2
                     self.loc += 1
                 if event.key == pygame.K_d:
                     if self.ans[self.loc] == "D":
                         self.display = 3
                     else:
+                        print(list(self.text.keys()))
+                        self.x = self.text[list(self.text.keys())[self.loc]][3]
                         self.display = 2
                     self.loc += 1
             elif event.key == pygame.K_SPACE and self.loc > 2:
                 self.quizActive = False
-                print("AAAAAAAAAAAA")
                 return
             elif event.key == pygame.K_SPACE and self.loc <= 2:
                 self.display = 1
-
-        print(self.loc)
         if(self.loc <= 2):
             self.draw()
         if event.type == pygame.KEYUP:
