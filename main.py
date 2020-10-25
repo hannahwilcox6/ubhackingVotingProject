@@ -13,7 +13,7 @@ pygame.display.set_icon(icon)
 
 preRunning = True
 while preRunning:
-    bg = pygame.image.load("titlescreen.jpg")
+    bg = pygame.image.load("titlefinal.jpg")
     Prescreen.blit(bg, (0, 0))
     pygame.display.update()
     for event in pygame.event.get():

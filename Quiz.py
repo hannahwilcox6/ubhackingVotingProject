@@ -46,10 +46,10 @@ class Quiz:
                         self.x = self.text[list(self.text.keys())[self.loc]][self.ansInd[self.loc]]
                         self.display = 2
                     self.loc += 1
-            elif event.key == pygame.K_SPACE and self.loc > 2:
+            elif event.key == pygame.K_e and self.loc > 2:
                 self.quizActive = False
                 return
-            elif event.key == pygame.K_SPACE and self.loc <= 2:
+            elif event.key == pygame.K_e and self.loc <= 2:
                 self.display = 1
         if(self.loc <= 2):
             self.draw()
