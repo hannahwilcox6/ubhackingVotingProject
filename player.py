@@ -6,6 +6,7 @@ class Player:
     collidedObject = None
     interacting = False
     quizScreen = False
+    canMove = True
 
     def __init__(self, img, x, y):
         self.playerImg = pygame.image.load(img)
@@ -19,7 +20,7 @@ class Player:
             self.playerX = 1436
         if event.type == pygame.KEYDOWN and self.interacting == False:
             if event.key == pygame.K_a:
-                self.playerX_change -= 0.25
+                self.playerX_change -= 2
             if event.key == pygame.K_d:
                 self.playerX_change += 0.25
             if event.key == pygame.K_e and self.collidedObject != None:

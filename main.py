@@ -26,9 +26,9 @@ Y = 480
 npc1 = npc.NPC("npc-man1.png",690, Y)
 npc2 = npc.NPC("npc-man2.png", 1240, Y)
 p1 = Player("standing-up-man-.png", 370, Y)
-q1 = Quiz(test1,screen)
-npcs = [npc1,npc2]
 
+q1 = Quiz(screen,test1)
+npcs = [npc1,npc2]
 while running:
     bg = pygame.image.load("placement.png")
     screen.blit(bg,(0,0))
@@ -38,13 +38,18 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        p1.actions(event)
+        if (p1.quizScreen == True):
+            q1.message_display()
+            q1.quizActive = True
+        else:
+            p1.actions(event)
     #Checks if player is hitting buttons
+    if(q1.quizActive):
+        q1.message_display()
     for i in npcs:
         i.draw(screen)
 
     p1.collision(npc1)
     p1.collision(npc2)
     p1.draw(screen)
-    p1.quizBackground(screen)
     pygame.display.update()
