@@ -5,11 +5,12 @@ class Quiz:
     display_height = 275
     quizActive = False
 
-    def __init__(self,screen,text,ans,loc):
+    def __init__(self,screen,text,ans,loc,display):
         self.screen = screen
         self.text = text
         self.ans = ans
         self.loc = loc
+        self.display = display
 
     def actions(self, event):
         if event.type == pygame.KEYDOWN:
@@ -30,11 +31,13 @@ class Quiz:
         textSurface = font.render(text, True, black)
         return textSurface, textSurface.get_rect()
 
-    def draw(self,message):
-        if(message == "C"):
+    def draw(self):
+        if(self.display == 3):
             self.correctAnswer(self)
-        elif(message == "I"):
+        elif(self.display == 2):
             self.incorrectAnswer(self)
+        elif(self.display == 1):
+            self.quizBackground()
 
     def message_display(self,ind):
         # Quiz Question:
