@@ -1,9 +1,9 @@
 # ubhackingVotingProject
 
 Resources Used:
-  https://www.pygame.org/docs/genindex.html
-  https://www.flaticon.com/ [For voting icon in the PyGame window]
-  First 7 Videos for basic tutorial code from playlist: https://www.youtube.com/watch?v=8GF6O6vNXCc&list=PLhTjy8cBISEo3SzET7Fc3-b4miKWp41yX&ab_channel=buildwithpython
+https://www.pygame.org/docs/genindex.html
+https://www.flaticon.com/ [For voting icon in the PyGame window]
+First 7 Videos for basic tutorial code from playlist: https://www.youtube.com/watch?v=8GF6O6vNXCc&list=PLhTjy8cBISEo3SzET7Fc3-b4miKWp41yX&ab_channel=buildwithpython
   
 This project was written using Python 3.7, Pycharm IDE, and the pygame library. Any and all code was written starting after the hackathon 12:00 PM start time.
 Collaborators include: Hannah Wilcox, Brodie Lembo, and Katherine Stock (ideas and visual assets, thus why she is not seen as a collaborator in this repository)
