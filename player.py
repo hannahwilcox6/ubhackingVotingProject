@@ -38,5 +38,7 @@ class Player:
     def collision(self, other):
         if (self.playerX + 64) >= other.x and self.playerX <= (other.x + 64):
             self.collidedObject = other
+            print(self.collidedObject)
+            print(self.collidedObject.quiz)
         else:
             self.collidedObject = None

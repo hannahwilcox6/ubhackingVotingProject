@@ -4,6 +4,7 @@ class Quiz:
     display_width = 375
     display_height = 275
     quizActive = False
+    finished = False
 
     def __init__(self,screen,text,ans,ansInd,loc,display):
         self.screen = screen
@@ -48,6 +49,9 @@ class Quiz:
                     self.loc += 1
             elif event.key == pygame.K_e and self.loc > 2:
                 self.quizActive = False
+                self.loc = 0
+                self.display = 1
+                self.finished = True
                 return
             elif event.key == pygame.K_e and self.loc <= 2:
                 self.display = 1

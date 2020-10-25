@@ -15,7 +15,6 @@ preRunning = True
 while preRunning:
     bg = pygame.image.load("titlefinal.jpg")
     Prescreen.blit(bg, (0, 0))
-    pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             preRunning = False
@@ -56,13 +55,15 @@ q2 = Quiz(screen, quiz2, ans2, ansInd2, 0, 1)
 q3 = Quiz(screen, quiz3, ans2, ansInd2, 0, 1)
 
 Y = 460
-npc1 = npc.NPC("man1.png",690, Y, q1)
-npc2 = npc.NPC("man2.png", 1240, Y, q2)
-npc3 = npc.NPC("person2.png", 355, Y, q3)
+npc1 = npc.NPC("man1.png",355, Y, q1)
+npc2 = npc.NPC("man2.png", 690, Y, q2)
+npc3 = npc.NPC("person2.png", 1240, Y, q3)
 p1 = Player("person1.png", 120, Y)
 
 npcs = [npc1, npc2, npc3]
+quizzes = [q1, q2, q3]
 
+currentquiz = q1
 
 def text_objects(text, font):
     black = (0, 0, 0)
@@ -82,28 +83,36 @@ def voted():
 while running:
     bg = pygame.image.load("finalbgrd.jpg")
     screen.blit(bg,(0,0))
+
     for i in npcs:
         i.draw(screen)
-        p1.collision(i)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if(p1.collidedObject != None and p1.quizScreen == False): #This is so 'e' doesn't break.
-            p1.actions(event)
-        if (p1.quizScreen == True):
-            q1.quizActive = True
-            if(q1.quizActive == True):
-                q1.draw()
-            q1.actions(event)
-        else:
-            p1.actions(event)
+        print(p1.quizScreen)
+
+        for i in npcs:
+            p1.collision(i)
+            if(p1.collidedObject != None and p1.quizScreen == False): #This is so 'e' doesn't break.
+                p1.actions(event)
+                print("AAAAAAAAAAAAAAA")
+                for i in quizzes:
+                    if(p1.collidedObject.quiz == i):
+                        currentquiz = i
+            if (p1.quizScreen == True and currentquiz.finished == False):
+                currentquiz.quizActive = True
+                if(currentquiz.quizActive == True):
+                    currentquiz.draw()
+                currentquiz.actions(event)
+            else:
+                p1.actions(event)
 
     p1.draw(screen)
-    if(q1.quizActive):
-        q1.draw()
+    if(currentquiz.quizActive):
+        currentquiz.draw()
     else:
         p1.quizScreen = False
         p1.interacting = False
-
 
     pygame.display.update()
