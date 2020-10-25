@@ -18,6 +18,7 @@ quiz1 = {"When is the deadline to register to vote?": ["[A] November 3", "[B] Oc
              "How can you check your registration status?": ["[A] You can't", "[B] Call the government",
                                                              "[C] Various websites online",
                                                              "[D] Just remember when you did it"]}
+ans1 = ["B","A","C"]
 test1 = {"How old do you need to be to vote?": ["[A] 18", "[B] 21", "[C] 28", "[D] 16"]}
 
 
@@ -27,7 +28,7 @@ npc1 = npc.NPC("npc-man1.png",690, Y)
 npc2 = npc.NPC("npc-man2.png", 1240, Y)
 p1 = Player("standing-up-man-.png", 370, Y)
 
-q1 = Quiz(screen,test1)
+q1 = Quiz(screen,quiz1,ans1,0)
 npcs = [npc1,npc2]
 while running:
     bg = pygame.image.load("placement.png")

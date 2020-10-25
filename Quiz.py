@@ -5,9 +5,11 @@ class Quiz:
     display_height = 275
     quizActive = False
 
-    def __init__(self,screen,text):
+    def __init__(self,screen,text,ans,loc):
         self.screen = screen
         self.text = text
+        self.ans = ans
+        self.loc = loc
 
     def actions(self, event):
         if event.type == pygame.KEYDOWN:
@@ -34,7 +36,7 @@ class Quiz:
         elif(message == "I"):
             self.incorrectAnswer(self)
 
-    def message_display(self):
+    def message_display(self,ind):
         # Quiz Question:
         largeText = pygame.font.Font('freesansbold.ttf', 40)
         textSurf, textRect = self.text_objects("Quiz Question: ", largeText)
@@ -42,17 +44,16 @@ class Quiz:
         self.screen.blit(textSurf, textRect)
         # [Actual Question]
         addH = 100
-        for question in self.text:
-            largeText = pygame.font.Font('freesansbold.ttf', 25)
-            textSurf, textRect = self.text_objects(question, largeText)
-            textRect.center = ((self.display_width * 2), (self.display_height + 70))
+        largeText = pygame.font.Font('freesansbold.ttf', 25)
+        textSurf, textRect = self.text_objects(ind[0], largeText)
+        textRect.center = ((self.display_width * 2), (self.display_height + 70))
+        self.screen.blit(textSurf, textRect)
+        for answer in ind[1]:
+            largeText = pygame.font.Font('freesansbold.ttf', 20)
+            textSurf, textRect = self.text_objects(answer, largeText)
+            textRect.center = ((self.display_width * 2), (self.display_height + addH))
             self.screen.blit(textSurf, textRect)
-            for answer in self.text[question]:
-                largeText = pygame.font.Font('freesansbold.ttf', 20)
-                textSurf, textRect = self.text_objects(answer, largeText)
-                textRect.center = ((self.display_width * 2), (self.display_height + addH))
-                self.screen.blit(textSurf, textRect)
-                addH += 35
+            addH += 35
         pygame.display.update()
 
     def correctAnswer(self):
@@ -85,4 +86,5 @@ class Quiz:
             rect.set_alpha(200)  # alpha level
             rect.fill((255, 255, 255)) #Rectangle to appear behind the quiz questions
             self.screen.blit(rect, (375, 275)) #Call rectangle to be drawn
-            self.message_display() #Call the questions to be displayed!
+            ind = list(self.text.items())[self.loc]
+            self.message_display(ind) #Call the questions to be displayed!
