@@ -4,6 +4,25 @@ from Quiz import Quiz
 import npc
 pygame.init()
 
+
+Prescreen = pygame.display.set_mode((1500,600))
+#Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+pygame.display.set_caption("UBHacking Voting 2020")
+icon = pygame.image.load("vote.png")
+pygame.display.set_icon(icon)
+
+preRunning = True
+while preRunning:
+    bg = pygame.image.load("titlescreen.jpg")
+    Prescreen.blit(bg, (0, 0))
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            preRunning = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_e:
+                preRunning = False
+
+
 #  game window, with height and width
 screen = pygame.display.set_mode((1500,600))
 #Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
@@ -67,7 +86,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if(p1.collidedObject != None and p1.quizScreen == False):
+        if(p1.collidedObject != None and p1.quizScreen == False): #This is so 'e' doesn't break.
             p1.actions(event)
         if (p1.quizScreen == True):
             q1.quizActive = True
