@@ -20,9 +20,9 @@ class Player:
             self.playerX = 1436
         if event.type == pygame.KEYDOWN and self.interacting == False:
             if event.key == pygame.K_a:
-                self.playerX_change -= 2
+                self.playerX_change -= 4
             if event.key == pygame.K_d:
-                self.playerX_change += 0.25
+                self.playerX_change += 4
             if event.key == pygame.K_e and self.collidedObject != None:
                 self.quizScreen = True
                 self.interacting = True
@@ -38,7 +38,3 @@ class Player:
     def collision(self, other):
         if (self.playerX + 32) >= other.x and self.playerX <= (other.x + 32):
             self.collidedObject = other
-
-
-
-    # Questions:

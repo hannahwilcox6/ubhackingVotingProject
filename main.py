@@ -22,7 +22,7 @@ test1 = {"How old do you need to be to vote?": ["[A] 18", "[B] 21", "[C] 28", "[
 
 
 
-Y = 480
+Y = 460
 npc1 = npc.NPC("npc-man1.png",690, Y)
 npc2 = npc.NPC("npc-man2.png", 1240, Y)
 p1 = Player("standing-up-man-.png", 370, Y)
@@ -39,13 +39,13 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         if (p1.quizScreen == True):
-            q1.message_display()
             q1.quizActive = True
+            q1.quizBackground()
         else:
             p1.actions(event)
     #Checks if player is hitting buttons
     if(q1.quizActive):
-        q1.message_display()
+        q1.quizBackground()
     for i in npcs:
         i.draw(screen)
 

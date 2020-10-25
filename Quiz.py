@@ -62,17 +62,27 @@ class Quiz:
         self.screen.blit(textSurf, textRect)
         pygame.display.update()
 
-    def incorrectAnswer(self):
+    def incorrectAnswer(self,correct):
         largeText = pygame.font.Font('freesansbold.ttf', 40)
         textSurf, textRect = self.text_objects("Incorrect!", largeText)
         textRect.center = ((self.display_width * 2), (self.display_height + 30))
         self.screen.blit(textSurf, textRect)
+        largeText = pygame.font.Font('freesansbold.ttf', 25)
+        textSurf, textRect = self.text_objects("The correct answer was: ", largeText)
+        textRect.center = ((self.display_width * 2), (self.display_height + 70))
+        self.screen.blit(textSurf, textRect)
+        largeText = pygame.font.Font('freesansbold.ttf', 20)
+        textSurf, textRect = self.text_objects(correct, largeText)
+        textRect.center = ((self.display_width * 2), (self.display_height + 100))
+        self.screen.blit(textSurf, textRect)
         pygame.display.update()
 
+
+
     def quizBackground(self):
-        if (self.quizScreen and self.quizActive):
+        if (self.quizActive):
             rect = pygame.Surface((700, 300))  # the size of your rect
-            #rect.set_alpha(300)  # alpha level
-            rect.fill((255, 255, 255))
-            self.screen.blit(rect, (375, 275))
-            self.message_display(self.test1)
+            rect.set_alpha(200)  # alpha level
+            rect.fill((255, 255, 255)) #Rectangle to appear behind the quiz questions
+            self.screen.blit(rect, (375, 275)) #Call rectangle to be drawn
+            self.message_display() #Call the questions to be displayed!
