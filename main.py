@@ -51,13 +51,17 @@ quiz3 = {"When does early voting occur in NYS?": ["[A] It doesn't","[B] October 
 ans3 = ["C","D","D"]
 ansInd3 = [2,3,3]
 
-Y = 460
-npc1 = npc.NPC("man1.png",690, Y)
-npc2 = npc.NPC("man2.png", 1240, Y)
-p1 = Player("person1.png", 370, Y)
-
 q1 = Quiz(screen,quiz1,ans1,ansInd1,0,1)
-npcs = [npc1,npc2]
+q2 = Quiz(screen, quiz2, ans2, ansInd2, 0, 1)
+q3 = Quiz(screen, quiz3, ans2, ansInd2, 0, 1)
+
+Y = 460
+npc1 = npc.NPC("man1.png",690, Y, q1)
+npc2 = npc.NPC("man2.png", 1240, Y, q2)
+npc3 = npc.NPC("person2.png", 355, Y, q3)
+p1 = Player("person1.png", 120, Y)
+
+npcs = [npc1, npc2, npc3]
 
 
 def text_objects(text, font):
@@ -78,13 +82,9 @@ def voted():
 while running:
     bg = pygame.image.load("finalbgrd.jpg")
     screen.blit(bg,(0,0))
-    npc1.draw(screen)
-    npc2.draw(screen)
-    # Window is closed.
-    # Check for collision with npcs
-    p1.collision(npc1)
-    p1.collision(npc2)
-    print(p1.collidedObject)
+    for i in npcs:
+        i.draw(screen)
+        p1.collision(i)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -98,8 +98,6 @@ while running:
         else:
             p1.actions(event)
 
-    for i in npcs:
-        i.draw(screen)
     p1.draw(screen)
     if(q1.quizActive):
         q1.draw()
