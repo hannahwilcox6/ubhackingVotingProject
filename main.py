@@ -1,5 +1,6 @@
 import pygame
 from player import Player
+from Quiz import Quiz
 import npc
 pygame.init()
 
@@ -11,19 +12,27 @@ icon = pygame.image.load("vote.png")
 pygame.display.set_icon(icon)
 
 running = True
+quiz1 = {"When is the deadline to register to vote?": ["[A] November 3", "[B] October 3", "[C] October 9",
+                                                           "[D] December 25"],
+             "How old do you need to be to vote?": ["[A] 18", "[B] 21", "[C] 28", "[D] 16"],
+             "How can you check your registration status?": ["[A] You can't", "[B] Call the government",
+                                                             "[C] Various websites online",
+                                                             "[D] Just remember when you did it"]}
 test1 = {"How old do you need to be to vote?": ["[A] 18", "[B] 21", "[C] 28", "[D] 16"]}
 
 # Player
 playerImg = pygame.image.load("standing-up-man-.png")
 playerX = 370
-playerY = 480
+Y = 450
 playerMove = 0
 
-npc1 = npc.NPC("npc-man1.png",690, 480)
-npc2 = npc.NPC("npc-man2.png", 1240, 480)
-p1 = Player("standing-up-man-.png", 370, 480)
+npc1 = npc.NPC("npc-man1.png",690, Y)
+npc2 = npc.NPC("npc-man2.png", 1240, Y)
+p1 = Player("standing-up-man-.png", 370, Y)
+q1 = Quiz(test1,screen)
 while running:
-    screen.fill((128, 242, 233))
+    bg = pygame.image.load("placement.png")
+    screen.blit(bg,(0,0))
     npc1.draw(screen)
     npc2.draw(screen)
     # Window is closed.
@@ -33,5 +42,5 @@ while running:
     #Checks if player is hitting buttons
         p1.actions(event)
     p1.draw(screen)
-    p1.quizBackground(screen)
+    #p1.quizBackground(screen)
     pygame.display.update()
