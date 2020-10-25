@@ -4,6 +4,7 @@ class Player:
     playerX_change = 0
     playerY_change = 0
     quizScreen = False
+    canMove = True
 
     def __init__(self, img, x, y):
         self.playerImg = pygame.image.load(img)
@@ -17,11 +18,12 @@ class Player:
             self.playerX = 1436
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
-                self.playerX_change -= 0.25
+                self.playerX_change -= 2
             if event.key == pygame.K_d:
-                self.playerX_change += 0.25
+                self.playerX_change += 2
             if event.key == pygame.K_e:
                 self.quizScreen = True
+                self.canMove = False
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_a or pygame.K_d:
                 self.playerX_change = 0
