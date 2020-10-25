@@ -3,6 +3,8 @@ import pygame
 class Player:
     playerX_change = 0
     playerY_change = 0
+    collidedObject = None
+    interacting = False
     quizScreen = False
 
     def __init__(self, img, x, y):
@@ -15,13 +17,14 @@ class Player:
             self.playerX = 0
         elif self.playerX >= 1436:
             self.playerX = 1436
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN and self.interacting == False:
             if event.key == pygame.K_a:
-                self.playerX_change -= 0.2
+                self.playerX_change -= 0.25
             if event.key == pygame.K_d:
-                self.playerX_change += 0.2
-            if event.key == pygame.K_e:
+                self.playerX_change += 0.25
+            if event.key == pygame.K_e and self.collidedObject != None:
                 self.quizScreen = True
+                self.interacting = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_a or pygame.K_d:
                 self.playerX_change = 0
@@ -30,6 +33,12 @@ class Player:
         screen.blit(self.playerImg, (self.playerX, self.playerY))
         self.playerX += self.playerX_change
         self.playerY += self.playerY_change
+
+    def collision(self, other):
+        if (self.playerX + 32) >= other.x and self.playerX <= (other.x + 32):
+            self.collidedObject = other
+
+
 
     # Questions:
     quiz1 = {"When is the deadline to register to vote?": ["[A] November 3", "[B] October 3", "[C] October 9",
