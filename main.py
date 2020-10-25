@@ -41,10 +41,17 @@ while running:
             running = False
         if (p1.quizScreen == True):
             q1.quizActive = True
-            q1.draw()
+            if(q1.quizActive == True):
+                q1.draw()
+            q1.actions(event)
         else:
             p1.actions(event)
     #Checks if player is hitting buttons
+    if(q1.quizActive):
+        q1.draw()
+    else:
+        p1.quizScreen = False
+        p1.interacting = False
     for i in npcs:
         i.draw(screen)
     p1.collision(npc1)
