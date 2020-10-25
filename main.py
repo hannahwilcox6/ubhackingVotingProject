@@ -15,6 +15,7 @@ preRunning = True
 while preRunning:
     bg = pygame.image.load("titlescreen.jpg")
     Prescreen.blit(bg, (0, 0))
+    pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             preRunning = False
@@ -81,11 +82,9 @@ def voted():
 while running:
     bg = pygame.image.load("finalbgrd.jpg")
     screen.blit(bg,(0,0))
-
     for i in npcs:
         i.draw(screen)
         p1.collision(i)
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
